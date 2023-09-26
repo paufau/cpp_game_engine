@@ -11,6 +11,7 @@ The goal is to provide easy setup for game loop and some other systems
 - [ ] Define code style
 - [ ] Hot-reloading feature
 - [ ] Compile everything to single file
+- [ ] Improve component creation readability (AKA constructor optional fields)
 
 #### Systems
 
@@ -26,3 +27,5 @@ The goal is to provide easy setup for game loop and some other systems
 
 - [ ] Adaptive UI
 - [ ] Advanced Tile Maps
+- [ ] Global to Local transform
+- [ ] Button actions (hover, press)
