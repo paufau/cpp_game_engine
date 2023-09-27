@@ -24,17 +24,17 @@ public:
     sprite = attach<game::AnimatedSprite>("resources/New Piskel.png", 7, 0.09);
 
     sprite.get()->scale = 2;
-    transform.get()->position.y = 100;
+    transform.get()->rectangle.y = 100;
   }
 
   void update(float deltaTime) override
   {
-    if (transform.get()->position.x < 20)
+    if (transform.get()->rectangle.x < 20)
     {
       direction = 1;
       sprite.get()->wFlipModifier = 1;
     }
-    else if (transform.get()->position.x > 300)
+    else if (transform.get()->rectangle.x > 300)
     {
       direction = -1;
       sprite.get()->wFlipModifier = -1;
@@ -42,14 +42,14 @@ public:
 
     if (game::Input::isKeyDown(game::KeyCode::KEY_UP))
     {
-      transform.get()->position.y -= speed * deltaTime;
+      transform.get()->rectangle.y -= speed * deltaTime;
     }
     else if (game::Input::isKeyDown(game::KeyCode::KEY_DOWN))
     {
-      transform.get()->position.y += speed * deltaTime;
+      transform.get()->rectangle.y += speed * deltaTime;
     }
 
-    transform.get()->position.x += speed * direction * deltaTime;
+    transform.get()->rectangle.x += speed * direction * deltaTime;
   }
 };
 

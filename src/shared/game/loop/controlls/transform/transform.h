@@ -7,6 +7,13 @@
 
 namespace game
 {
+  struct Position
+  {
+    Position(float x, float y) : x(x), y(y){};
+    float x;
+    float y;
+  };
+
   class Transform : public Component
   {
   public:
@@ -16,25 +23,26 @@ namespace game
     };
     Transform(float x, float y, float width, float height) : Component(false)
     {
-      this->position = (Rectangle){x, y, width, height};
+      this->rectangle = (Rectangle){x, y, width, height};
     };
     ~Transform()
     {
       std::cout << "Destroy transform" << std::endl;
     }
 
-    Rectangle position = (Rectangle){0, 0, 0, 0};
+    // TODO move to private
+    Rectangle rectangle = (Rectangle){0, 0, 0, 0};
 
-    void setPosition(float x, float y)
+    void setPosition(Position position)
     {
-      this->position.x = x;
-      this->position.y = y;
+      this->rectangle.x = position.x;
+      this->rectangle.y = position.y;
     }
 
     void setSize(float width, float height)
     {
-      this->position.width = width;
-      this->position.height = height;
+      this->rectangle.width = width;
+      this->rectangle.height = height;
     }
   };
 };

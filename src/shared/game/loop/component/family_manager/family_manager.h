@@ -53,6 +53,16 @@ namespace game
   public:
     bool isChildrenHolder = true;
 
+    T *getParent()
+    {
+      if (parent_manager == nullptr)
+      {
+        return nullptr;
+      }
+
+      return static_cast<T *>(parent_manager);
+    }
+
     void checkNotToBeItself(FamilyManager *family_manager)
     {
       if (family_manager == this)
@@ -113,22 +123,13 @@ namespace game
       holder->children.template destroy<R>(accessor);
     }
 
-    // template <class R, typename std::enable_if<std::is_base_of<T, R>::value>::type * = nullptr>
-    // Accessor<R> findFirst()
-    // {
-    //   std::string type = typeid(R).name();
+    template <class R, typename std::enable_if<std::is_base_of<T, R>::value>::type * = nullptr>
+    Accessor<R> findFirst()
+    {
+      FamilyManager<T> *holder = findChildrenHolder();
 
-    //   for (auto it = children.begin(); it != children.end(); ++it)
-    //   {
-    //     Child<T> *child = (*it).get();
-    //     if (child->type == type)
-    //     {
-    //       return Accessor<R>(std::static_pointer_cast<R>(child->ptr));
-    //     }
-    //   }
-
-    //   return Accessor<R>();
-    // }
+      return holder->children.template findFirst<R>();
+    }
 
     // template <class R, typename std::enable_if<std::is_base_of<T, R>::value>::type * = nullptr>
     // std::list<Accessor<R>> findAll()

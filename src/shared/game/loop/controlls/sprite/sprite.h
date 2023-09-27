@@ -50,8 +50,8 @@ namespace game
               (float)(this->wFlipModifier * this->texture.width),
               (float)(this->hFlipModifier * this->texture.height)},
           (Rectangle){
-              transform.get()->position.x,
-              transform.get()->position.y,
+              transform.get()->rectangle.x,
+              transform.get()->rectangle.y,
               (float)this->texture.width * this->scale,
               (float)this->texture.height * this->scale},
           (Vector2){0.0, 0.0}, // transforms origin
